@@ -4,7 +4,8 @@ const fs = require('fs').promises;
 exports.handler = async (event) => {
   const message = '[bold: on]This is bold text.[bold: off]';
 
-  const filePath = `hello.stm`;
+  // Use /tmp directory for writing files
+  const filePath = `/tmp/hello.stm`;
   await fs.writeFile(filePath, message);
 
   const data = await fs.readFile(filePath, { encoding: 'utf8', flag: 'r' });
@@ -13,8 +14,8 @@ exports.handler = async (event) => {
   const parameters = [
     'decode',
     'application/vnd.star.starprnt',
-    'hello.stm',
-    'outputdata.bin',
+    '/tmp/hello.stm',
+    '/tmp/outputdata.bin'
   ];
 
   const res = await execFileSync('/opt/cputil-linux-x64/cputil', parameters);
