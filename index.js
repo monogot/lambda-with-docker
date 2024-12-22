@@ -15,10 +15,15 @@ exports.handler = async (event) => {
     'decode',
     'application/vnd.star.starprnt',
     '/tmp/hello.stm',
-    '/tmp/outputdata.bin'
+    '/tmp/outputdata.bin',
   ];
 
-  const res = await execFileSync('/opt/cputil-linux-x64/cputil', parameters);
+  // const parameters = [
+  //   'supportedinputs',
+  // ]
+  console.log("Hello world")
+
+  const res = await execFileSync('./cputil-linux-x64/cputil', parameters);
   console.log(res);
 
   const response = {
