@@ -6,13 +6,7 @@ FROM node:22 AS build-image
 ARG FUNCTION_DIR
 
 # Install build dependencies
-RUN apt-get update && \
-    apt-get install -y \
-    g++ \
-    make \
-    cmake \
-    unzip \
-    libcurl4-openssl-dev
+RUN apt-get update && apt-get install -y cmake libcurl4-openssl-dev
 
 # Copy function code
 RUN mkdir -p ${FUNCTION_DIR}/
